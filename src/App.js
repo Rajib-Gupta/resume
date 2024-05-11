@@ -1,24 +1,28 @@
-import logo from './logo.svg';
-import './App.css';
+import { ErrorBoundary } from "react-error-boundary";
+import "./App.css";
+import AppRoutes from "./AppRoutes";
+import { BrowserRouter } from "react-router-dom";
+import Header from "./app/components/shared/header/header";
+import React, { Suspense } from "react";
 
+const LazyHeader = React.lazy(() =>
+  import("../src/app/components/shared/header/header")
+);
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <ErrorBoundary
+      onError={(error) => {
+        console.log(error);
+      }}
+      FallbackComponent={() => <p>Something went wrong</p>}
+    >
+      <Suspense fallback={<div>Loading...</div>}>
+        <LazyHeader />
+      </Suspense>
+      <BrowserRouter>
+        <AppRoutes />
+      </BrowserRouter>
+    </ErrorBoundary>
   );
 }
 

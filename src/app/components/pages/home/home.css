@@ -1,0 +1,28 @@
+.home {
+  margin-right: 40px;
+}
+
+.profileImg{
+    display: flex;
+}
+.content {
+  color: white;
+  font-size: medium;
+  margin-top: 40px;
+  font-style: normal;
+}
+.social {
+  display: flex;
+  list-style: none;
+  margin-right: 10px;
+  cursor: pointer;
+}
+.socila-logo {
+  margin-right: 40px;
+}
+/* Solid border */
+hr.solid {
+  border-top: 2px solid #b0b0b0;
+  justify-content: center;
+  margin-top: 25px;
+}
